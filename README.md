@@ -8,9 +8,9 @@ The application is powered by Flask, a lightweight web framework in Python, and 
 
 The model itself is based on the following three linear equations:
 
-1. `y1 = 2*x1 + 3*x2 + 4`
-2. `y2 = -x1 + x2 - 2`
-3. `y3 = x1 - 2*x2 + 1`
+1. `y1 = 2*x1 + 3*x2`
+2. `y2 = -x1 + x2`
+3. `y3 = x1 - 2*x2`
 
 The project consists of two main components:
 1. A Python model (`model.py`) that trains and saves the linear regression model.

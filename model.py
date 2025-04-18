@@ -3,6 +3,11 @@ from sklearn.linear_model import LinearRegression
 import joblib
 
 # Input data (features) and corresponding outputs (targets)
+
+# y1 = 2*x1 + 3*x2
+# y2 = -x1 + x2
+# y3 = x1 - 2*x2
+
 X = np.array([
     [1.0, 2.0],
     [2.0, 1.0],
