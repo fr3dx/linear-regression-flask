@@ -2,7 +2,7 @@ import numpy as np
 from sklearn.linear_model import LinearRegression
 import joblib
 
-# Adatok és válaszok
+# Input data (features) and corresponding outputs (targets)
 X = np.array([
     [1.0, 2.0],
     [2.0, 1.0],
@@ -21,9 +21,10 @@ Y = np.array([
     [14, 3, 0]
 ])
 
-# Modell létrehozása és betanítása
+# Create and train the linear regression model
 model = LinearRegression()
 model.fit(X, Y)
 
-# A tanult modell elmentése
+# Save the trained model to a file
 joblib.dump(model, 'regression_model.pkl')
+

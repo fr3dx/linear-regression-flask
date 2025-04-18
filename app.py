@@ -4,29 +4,29 @@ import joblib
 
 app = Flask(__name__)
 
-# Betöltjük a már betanított modellt
+# Load the pre-trained model
 model = joblib.load('regression_model.pkl')
 
 @app.route('/')
 def home():
-    # Az index.html fájl renderelése, amit a böngésző kér
+    # Render the index.html file when the browser requests the root URL
     return render_template('index.html')
 
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
-        # JSON adat beolvasása
+        # Read JSON data from the request
         data = request.get_json()
 
-        # Kivesszük a bemeneti adatokat
-        x1 = float(data['features'][0])  # Az első feature
-        x2 = float(data['features'][1])  # A második feature
+        # Extract input features
+        x1 = float(data['features'][0])  # First feature
+        x2 = float(data['features'][1])  # Second feature
         
         input_data = np.array([[x1, x2]])
         prediction = model.predict(input_data)
         prediction = np.round(prediction, 6)
 
-        # Visszaadjuk a predikciót JSON formátumban
+        # Return the prediction in JSON format
         return jsonify({
             'y1': prediction[0][0],
             'y2': prediction[0][1],
@@ -42,4 +42,3 @@ if __name__ == '__main__':
 
 
 
-# Invoke-RestMethod -Method POST -Uri http://127.0.0.1:5000/predict -Body (@{features = @(4.0, 1.0)} | ConvertTo-Json -Depth 2) -ContentType "application/json"
